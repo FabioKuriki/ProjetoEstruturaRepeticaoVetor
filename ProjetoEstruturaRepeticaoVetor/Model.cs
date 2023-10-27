@@ -9,17 +9,26 @@ namespace ProjetoEstruturaRepeticaoVetor
 {
     class Model
     {
-        public double[] numDouble;//Declaração de um vetor
+        public double[] numDouble;
+        public double[] numDouble2;//Declaração de um vetor
         public int[] numInt;
+        public int posicao;
         public int i;//Contador do vetor
-        public int impares;
+        public double maior;
+        public Boolean validacao;
+        public double segundoMaior;
         private double soma;
         public Model()
         {
             numDouble = new double[50];
+            numDouble2 = new double[50];
             numInt = new int[50];
             i = 0;
-            impares = 0;
+            soma = 0;
+            validacao = false;
+            maior = 0;
+            segundoMaior = 0;
+            posicao = 0;
             ConsultarSoma = 0;
         }//Fim do Construtor
 
@@ -55,7 +64,7 @@ namespace ProjetoEstruturaRepeticaoVetor
             for(i = 0; i < 5; i++) 
             {
                 Console.Write(i + 1 + "ª Posição: ");
-                numInt[i] = Convert.ToInt32((Console.ReadLine()));
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
             }//Fim do for
         }//Fim do método
 
@@ -73,7 +82,7 @@ namespace ProjetoEstruturaRepeticaoVetor
             for (i = 0; i < 10; i++)
             {
                 Console.WriteLine("Informe o " + (i + 1) + "° número: ");
-                numInt[i] = Convert.ToInt32((Console.ReadLine()));
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
             }
         }
 
@@ -85,30 +94,28 @@ namespace ProjetoEstruturaRepeticaoVetor
                 {
                     Console.WriteLine("\nTodos os números pares digitados foram: ");
                 }
-                if (numInt[i] % 2 == 0)
+                if (numDouble[i] % 2 == 0)
                 {
-                    Console.WriteLine(numInt[i]);
-                }
-                else
-                {
-                    impares = impares + 1;
-                }
-
-                if (impares == 10)
-                {
-                    Console.WriteLine("Nenhum");
+                    Console.WriteLine(numDouble[i]);
                 }
             }
         }
 
         //Exercício 03
-        public double ContagemVinte()
+        public void ContagemVinte()
         {
             for (i = 0; i < 20; i++)
             {
                 Console.WriteLine("Informe o " + (i + 1) + "° número: ");
-                numInt[i] = Convert.ToInt32((Console.ReadLine()));
-                ConsultarSoma = ConsultarSoma + numDouble[i];
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+
+        public double Media()
+        {
+            for (i = 0; i < 20; i++)
+            {
+                ConsultarSoma += numDouble[i];
             }
             return ConsultarSoma / i;
         }
@@ -119,7 +126,7 @@ namespace ProjetoEstruturaRepeticaoVetor
             for (i = 0; i < 15; i++)
             {
                 Console.WriteLine("Informe o " + (i + 1) + "° número: ");
-                numInt[i] = Convert.ToInt32((Console.ReadLine()));
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
             }
         }
 
@@ -131,41 +138,250 @@ namespace ProjetoEstruturaRepeticaoVetor
                 {
                     Console.WriteLine("\nTodos os números pares digitados foram: ");
                 }
-                if (numInt[i] % 2 == 0)
+                if (numDouble[i] % 2 == 0)
                 {
-                    Console.WriteLine(numInt[i]);
-                }
-                else
-                {
-                    impares = impares + 1;
-                }
-
-                if (impares == 15)
-                {
-                    Console.WriteLine("Nenhum");
+                    Console.WriteLine(numDouble[i]);
                 }
             }
         }
 
         //Exercício 05
-        public void ContadorVinteECinco()
+        public void ContagemVinteECinco()
         {
             for (i = 0; i < 25; i++)
             {
+                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+
+        public void NumMaior()
+        {
+            for(i = 0; i < 25; i++)
+            {
                 if(i == 0)
                 {
-                    ConsultarSoma = ConsultarSoma + numInt[i];
+                    maior = numDouble[i];
+                    posicao = i + 1;
                 }
                 else
                 {
-                    if (numInt[i] > ConsultarSoma)
+                    if (numDouble[i] > maior)
                     {
-                        ConsultarSoma = numInt[i];
+                        maior = numDouble[i];
+                        posicao = i + 1;
                     }
                 }
-                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
-                numInt[i] = Convert.ToInt32((Console.ReadLine()));
             }
+            Console.WriteLine("\nO maior número é " + maior + ", e sua posição é " + posicao);
+        }
+
+        //Exercício 06
+        public void ContagemTrinta()
+        {
+            for (i = 0; i < 30; i++)
+            {
+                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+
+        public void NumMenor()
+        {
+            for (i = 0; i < 30; i++)
+            {
+                if (i == 0)
+                {
+                    maior = numDouble[i];
+                    posicao = i + 1;
+                }
+                else
+                {
+                    if (numDouble[i] < maior)
+                    {
+                        maior = numDouble[i];
+                        posicao = i + 1;
+                    }
+                }
+            }
+            Console.WriteLine("\nO menor número é " + maior + ", e sua posição é " + posicao);
+        }
+
+        //Exercicio 07
+        public void ContagemCinquenta()
+        {
+            for (i = 0; i < 50; i++)
+            {
+                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+
+        public double SegundoMaior()
+        {
+            for (i = 0; i < 50; i++)
+            {
+                if(i == 0)
+                {
+                    maior = numDouble[i];
+                    segundoMaior = numDouble[i];
+                }
+                else
+                {
+                    if (numDouble[i] > maior)
+                    {
+                        segundoMaior = maior;
+                        maior = numDouble[i];
+                    }
+                }
+            }
+            return segundoMaior;
+        }
+
+        //Exercício 08
+        public double Soma()
+        {
+            for(i = 0; i < 10; i++)
+            {
+                soma = soma + numDouble[i];
+            }
+            return soma;
+        }
+
+        //Exercício 09
+        public double MediaNumPar()
+        {
+            for (i = 0; i < 15; i++)
+            {
+                if (numDouble[i] % 2 == 0)
+                {
+                    soma = soma + numDouble[i];
+                    posicao = posicao + 1;
+                }
+            }
+            return soma / posicao;
+        }
+
+        //Exercício 10
+        public double MediaNumImpar()
+        {
+            for (i = 0; i < 20; i++)
+            {
+                if (numDouble[i] % 2 != 0)
+                {
+                    soma = soma + numDouble[i];
+                    posicao = posicao + 1;
+                }
+            }
+            return soma / posicao;
+        }
+
+        //Exercício 11
+        public int PrimeiroNumImpar()
+        {
+            for(i = 0; i < 10; i++)
+            {
+                if (numDouble[i] % 2 != 0 && validacao == false)
+                {
+                    posicao = i + 1;
+                    validacao = true;
+                }
+            }
+            return posicao;
+        }
+
+        //Exercício 12
+        public int UltimoNumPar()
+        {
+            for (i = 0; i < 10; i++)
+            {
+                if (numDouble[i] % 2 == 0)
+                {
+                    posicao = i + 1;
+                }
+            }
+            return posicao;
+        }
+
+        //Exercício 13
+        public int NumEntreDezECinquenta()
+        {
+            for(i = 0; i < 10; i++)
+            {
+                if (numDouble[i] > 10 && numDouble[i] < 50)
+                {
+                    posicao = posicao + 1;
+                }
+            }
+            return posicao;
+        }
+
+        //Exercício 14
+        public void ContagemDoze()
+        {
+            for (i = 0; i < 12; i++)
+            {
+                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+
+        public double SomaIndicePar()
+        {
+            for(i = 0; i < 12; i++)
+            {
+                if ((i + 1) % 2 == 0)
+                {
+                    soma = soma + numDouble[i];
+                }
+            }
+            return soma;
+        }
+
+        //Exercício 15
+        public double SomaIndiceImpar()
+        {
+            for(i = 0; i < 10; i ++)
+            {
+                if ((i + 1) % 2 != 0)
+                {
+                    soma = soma + numDouble[i];
+                }
+            }
+            return soma;
+        }
+
+        //Exercício 16
+        public void MostrarVetor2()
+        {
+            for (i = 9; i >= 0; i--)
+            {
+                Console.WriteLine(i + 1 + "ª Posição: " + numDouble[i]);
+            }
+        }
+
+        //Exercício 17
+        public void PreencherVetor2()
+        {
+            for (i = 0; i < 5; i++)
+            {
+                Console.Write(i + 1 + "ª Posição: ");
+                numDouble2[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+
+        public double SomaDoisVetores()
+        {
+            for(i = 0; i < 5; i++)
+            {
+                soma = soma + numDouble[i];
+            }
+
+            for (i = 0; i < 5; i++)
+            {
+                soma = soma + numDouble2[i];
+            }
+            return soma;
         }
     }//Fim da classe
 }//Fim do projeto
