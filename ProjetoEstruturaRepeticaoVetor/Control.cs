@@ -45,7 +45,9 @@ namespace ProjetoEstruturaRepeticaoVetor
                              "16. Soma dos valores nos índices ímpares de 10 elementos\n" +
                              "17. Vetor Inverso de 10 elementos\n" +
                              "18. Soma dos elementos de 2 vetores com 5 elementos cada\n" +
-                             "19. ");
+                             "19. Produto escalar entre dois vetores de 8 elementos\n" +
+                             "20. Produto vetorial de dois vetores de 6 elementos\n" +
+                             "21. Vetor com os valores pares de outro vetor de 10 elementos");
             ConsultarOpcao = Convert.ToInt32(Console.ReadLine());
 
         }//Fim do menu
@@ -138,6 +140,28 @@ namespace ProjetoEstruturaRepeticaoVetor
                         Console.WriteLine("A soma dos dois vetores será: " + modelo.SomaDoisVetores());
                         break;
                     case 19:
+                        Console.WriteLine("1° Vetor:");
+                        modelo.ContagemOito();
+                        Console.WriteLine("\n2º Vetor:");
+                        modelo.ContagemOitoDois();
+                        Console.WriteLine("\nO produto escalar entre esse dois vetores será: " + modelo.ProdutoEscalar());
+                        break;
+                    case 20:
+                        Console.WriteLine("1° Vetor:");
+                        modelo.ContagemSeis();
+                        Console.WriteLine("\n2º Vetor:");
+                        modelo.ContagemSeisDois();
+                        Console.WriteLine("\nO produto vetorial do 1° vetor é:" + modelo.ProdutoVetorial());
+                        Console.WriteLine("\nO produto vetorial do 2° vetor é:" + modelo.ProdutoVetorialDois());
+                        break;
+                    case 21:
+                        modelo.ContagemDez();
+                        Console.WriteLine("\n");
+                        modelo.VetorPar();
+
+                        //Método para validar que o vetor recebeu em cada posição um número par
+                        //Console.WriteLine("\n");
+                        //modelo.ValidacaoVetorPar();
                         break;
                     default:
                         Console.WriteLine("Erro, escolha uma opção válida!");

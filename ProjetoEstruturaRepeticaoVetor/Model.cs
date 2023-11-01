@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,22 +15,26 @@ namespace ProjetoEstruturaRepeticaoVetor
         public int[] numInt;
         public int posicao;
         public int i;//Contador do vetor
+        public int i2;//2° Contador
         public double maior;
         public Boolean validacao;
         public double segundoMaior;
         private double soma;
+        public double produtoEscalar;
         public Model()
         {
             numDouble = new double[50];
             numDouble2 = new double[50];
             numInt = new int[50];
             i = 0;
+            i2 = 0;
             soma = 0;
             validacao = false;
             maior = 0;
             segundoMaior = 0;
             posicao = 0;
             ConsultarSoma = 0;
+            produtoEscalar = 0;
         }//Fim do Construtor
 
         public double ConsultarSoma
@@ -382,6 +387,106 @@ namespace ProjetoEstruturaRepeticaoVetor
                 soma = soma + numDouble2[i];
             }
             return soma;
+        }
+
+        //Exercício 18
+        public void ContagemOito()
+        {
+            for (i = 0; i < 8; i++)
+            {
+                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+        public void ContagemOitoDois()
+        {
+            for (i = 0; i < 8; i++)
+            {
+                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
+                numDouble2[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+
+        public double ProdutoEscalar()
+        {
+            for (i = 0; i < 8; i++)
+            {
+                produtoEscalar = produtoEscalar + (numDouble[i] * numDouble2[i]);
+            }
+            return produtoEscalar;
+        }
+
+        //Exercício 19
+        public void ContagemSeis()
+        {
+            for (i = 0; i < 6; i++)
+            {
+                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
+                numDouble[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+        public void ContagemSeisDois()
+        {
+            for (i = 0; i < 6; i++)
+            {
+                Console.WriteLine("Informe o " + (i + 1) + "° número: ");
+                numDouble2[i] = Convert.ToDouble((Console.ReadLine()));
+            }
+        }
+
+        public double ProdutoVetorial()
+        {
+            for (i = 0; i < 6; i++)
+            {
+                if (i == 0)
+                {
+                    produtoEscalar = numDouble[i];//Usado a mesma variável para outro calculo
+                }
+                else
+                {
+                    produtoEscalar = produtoEscalar * numDouble[i];
+                }
+            }
+            return produtoEscalar;
+        }
+
+        public double ProdutoVetorialDois()
+        {
+            for (i = 0; i < 6; i++)
+            {
+                if (i == 0)
+                {
+                    produtoEscalar = numDouble2[i];//Usado a mesma variável para outro calculo
+                }
+                else
+                {
+                    produtoEscalar = produtoEscalar * numDouble2[i];
+                }
+            }
+            return produtoEscalar;
+        }
+
+        //Exercício 20
+        public void VetorPar()
+        {
+            for (i = 0; i < 10; i++)
+            {
+                if (numDouble[i] % 2 == 0)
+                {
+                    numDouble2[i2] = numDouble[i];
+                    Console.WriteLine((i2 + 1) + "° Posição: " + numDouble2[i2]);
+                    i2 = i2 + 1;
+                }
+            }
+        }
+
+        //Método para validar que o vetor recebeu em cada posição um número par
+        public void ValidacaoVetorPar()
+        {
+            for (i = 0; i < 10; i++)
+            {
+                Console.WriteLine((i + 1) + "° Posição: " + numDouble2[i]);
+            }
         }
     }//Fim da classe
 }//Fim do projeto
